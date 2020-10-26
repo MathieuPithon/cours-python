@@ -3,16 +3,16 @@ from carre import Carre as ca
 
 c = ca(5)
 print(c)
-b=c.factor(2)
+b = c.factor(2)
 print(b)
 
-d= b+c
+d = b+c
 print(d)
 
-e= d-c
+e = d-c
 print(e)
 print(int(c))
-print(e<d)
+print(e < d)
 
 print(c.counter)
 
