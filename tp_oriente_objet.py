@@ -5,10 +5,10 @@ class concessionnaire:
         self.nb_employes = nb_employes
         self.ville = ville
         self.nb_modele = nb_modele
-        self.voitures = voiture()
+        self.voitures = self.Voiture()
 
-    class voiture:
+    class Voiture:
         
-        def __init__(self, prix, roue, moteur, self.marque):
+        def __init__(self, prix, roue, moteur, marque):
             self.prix = prix
             self.marque = marque
