@@ -1,19 +1,18 @@
 from tp_oriente_objet import concessionnaire, Voiture
-from fichier_client_fournisseur import Client
-
+from fichier_client_fournisseur import Client, Fournisseur
 # création de l'objet concession
 concession = concessionnaire("renault", 15, "Angers", 4)
 client = {}
-
+fournisseurs ={}
 # ajout des 3 voitures
-concession.ajout_voiture(15000, "crantée", "bleu", 150, "diesel")
-concession.ajout_voiture(50000, "chromée", "azure", 878, "électrique")
-concession.ajout_voiture(45000, "chainée", "violacée", 320, "gasoil")
-concession.ajout_voiture(8500, "lisse", "blanc", 750, "sans plomb 95")
-concession.ajout_voiture(50, "voilée","rouille", 2, "huile" )
 
-#ajout d'une vente
-concession.achat_voiture("Pithon", "Mathieu", "14/05/2020", concession.voitures_en_vente[1] )
+concession.ajout_voiture(15000, "crantée", "bleu", 150, "diesel", "1")
+concession.ajout_voiture(50000, "chromée", "azure", 878, "électrique", "2")
+concession.ajout_voiture(45000, "chainée", "violacée", 320, "gasoil", "3")
+concession.ajout_voiture(8500, "lisse", "blanc", 750, "sans plomb 95", "4")
+concession.ajout_voiture(50, "voilée","rouille", 2, "huile", "5" )
+modele = {concession.voitures_en_vente[0].modele : concession.voitures_en_vente[0],concession.voitures_en_vente[1].modele : concession.voitures_en_vente[1],concession.voitures_en_vente[2].modele : concession.voitures_en_vente[2],
+concession.voitures_en_vente[3].modele : concession.voitures_en_vente[3]}
 # on affiche des valeurs pour vérifier
 print(concession.voitures_en_vente[0].couleur)
 print(concession.voitures_en_vente[1].marque, concession.voitures_en_vente[2].moteur.carburant)
@@ -29,8 +28,23 @@ while True:
 
     #ajout d'une voiture dans la liste des voitures à vendre
     if a=="achat":
-        print("on va maintenant vous proposer d'ajouter la dernière voiture:")
-        concession.ajout_voiture(int(input("choisissez le prix:")), input("saisisssez le type de roue: "), input("saissez la couleur de la voiture:"), int(input("choisissez la puissance du moteur: ")), input("choisissez le carburant du moteur:"))
+        print("on va maintenant vous proposer d'ajouter la nouvelle voiture:")
+        fournisseur= input("choisissez le fournisseur: ")
+        if fournisseur in fournisseurs:
+            print("nous connaissons déja ce fournisseur")
+        else:
+            print("c'est la première fois que l'on commerce avec ce fournisseur, on va l'enregistrer")
+            fournisseurs[fournisseur] = Fournisseur(fournisseur, input("choisissez la localisation de l'usine:"), input("donnez la nationalité du fournisseur"))
+        mod = input("saisissez le modèle de la voiture:")
+        if mod in modele:
+            print("on a déja acheté ce type de modèle, il a été acheté automatiquement")
+            concession.ajout_voiture(modele[mod])
+            fournisseurs[fournisseur].historique_achat(modele[mod])
+        else:
+            print("ce modèle n'existe pas encore, on va le créer:")
+            modele[mod]= concession.ajout_voiture(int(input("choisissez le prix:")), input("saisisssez le type de roue: "), input("saissez la couleur de la voiture:"), int(input("choisissez la puissance du moteur: ")),
+            input("choisissez le carburant du moteur:"), mod)
+            fournisseurs[fournisseur].historique_achat(modele[mod])
     
     #ajout d'une vente dans l'historique d'achat
     elif a=="vente":
