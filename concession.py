@@ -17,32 +17,3 @@ class concessionnaire:
         self.liste_client.append([date, nom, prénom, modele])
         self.voitures_en_vente.remove(modele)
 
-
-# création de la classe voiture
-class Voiture:
-
-    def __init__(self, prix, roue, moteur, marque, couleur, modele):
-        self.prix = prix
-        self.marque = marque
-        self.moteur = moteur
-        self.roue = roue
-        self.couleur = couleur
-        self.modele = modele
-
-class Moteur:
-
-    def __init__(self,chevaux, carburant):
-        self.chevaux = chevaux
-        self.carburant = carburant
-
-# prévenir l'utilisateur si par erreur il exécute le mauvais fichier
-if __name__ == "__main__":
-    print("le programme n'est pas fait pour ça")
-
-
-#une classe un fichier
-#un dossier qui contient les classes
-#programme principal dans une classe
-#donnée dans un ou plusieurs fichier de configuration
-#ne doivent contenir que des constantes
-#
