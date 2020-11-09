@@ -11,12 +11,11 @@ class concessionnaire:
 
     # fonction permettant d'ajouter les voitures en vente par la concession
     def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant):
-        moteur={"chevaux":mt_chevaux, "carburant": mt_carburant}
-        self.voitures_en_vente.append(Voiture(prix, roue, moteur, self.marque, couleur))
+        self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur))
 
     def achat_voiture(self, nom, prénom, date, modele):
-        self.liste_client.append([date, nom, prénom,self.voitures_en_vente[modele]])
-        self.voitures_en_vente.pop(modele)
+        self.liste_client.append([date, nom, prénom,modele])
+        self.voitures_en_vente.remove(modele)
 
 
 # création de la classe voiture
@@ -29,6 +28,11 @@ class Voiture:
         self.roue = roue
         self.couleur = couleur
 
+class Moteur:
+
+    def __init__(self,chevaux, carburant):
+        self.chevaux = chevaux
+        self.carburant = carburant
 
 # prévenir l'utilisateur si par erreur il exécute le mauvais fichier
 if __name__ == "__main__":

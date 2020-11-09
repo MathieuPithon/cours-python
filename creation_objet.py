@@ -1,8 +1,9 @@
 from tp_oriente_objet import concessionnaire, Voiture
+from fichier_client_fournisseur import Client
 
 # création de l'objet concession
 concession = concessionnaire("renault", 15, "Angers", 4)
-
+client = {}
 
 # ajout des 3 voitures
 concession.ajout_voiture(15000, "crantée", "bleu", 150, "diesel")
@@ -12,10 +13,10 @@ concession.ajout_voiture(8500, "lisse", "blanc", 750, "sans plomb 95")
 concession.ajout_voiture(50, "voilée","rouille", 2, "huile" )
 
 #ajout d'une vente
-concession.achat_voiture("Pithon", "Mathieu", "14/05/2020", 1 )
+concession.achat_voiture("Pithon", "Mathieu", "14/05/2020", concession.voitures_en_vente[1] )
 # on affiche des valeurs pour vérifier
 print(concession.voitures_en_vente[0].couleur)
-print(concession.voitures_en_vente[1].marque, concession.voitures_en_vente[2].moteur["carburant"])
+print(concession.voitures_en_vente[1].marque, concession.voitures_en_vente[2].moteur.carburant)
 print(concession.__dict__, "\n \n")
 
 
@@ -33,8 +34,16 @@ while True:
     
     #ajout d'une vente dans l'historique d'achat
     elif a=="vente":
-        concession.achat_voiture(input("nom du client:"), input("prénom du client:"), input("date d'achat (jj/mm/aaaa):"), int(input("index de la voiture:")))
-    
+        nom= input("nom du client:")
+        if nom in client:
+            print("le client est déja dans notre base de donnée:")
+            client[nom].achat(input("date d'achat (jj/mm/aaaa):"), concession.voitures_en_vente[int(input("index de la voiture:"))])
+        else:
+            client[nom]= Client(nom, input("prénom du client:"))
+            client[nom].achat(input("date d'achat (jj/mm/aaaa):"), concession.voitures_en_vente[int(input("index de la voiture:"))])
+        concession.voitures_en_vente.remove(client[nom].dernier_achat)
+        print(client[nom].__dict__)
+        
     #affichage de l'historique d'achat
     elif a =="listea":
         print(concession.liste_client)
