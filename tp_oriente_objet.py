@@ -12,3 +12,12 @@ class concessionnaire:
         def __init__(self, prix, roue, moteur, marque):
             self.prix = prix
             self.marque = marque
+            self.moteur = self.Moteur()
+
+        
+        class Moteur:
+            
+            def __init__ (self, chevaux, carburant, catégorie):
+                self.chevaux= chevaux
+                self.carburant = carburant
+                self.type = catégorie
