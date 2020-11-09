@@ -6,16 +6,17 @@ class concessionnaire:
         self.nb_employes = nb_employes
         self.ville = ville
         self.nb_modele = nb_modele
-        self.voitures = []
-        self.moteurs = {}
+        self.voitures_en_vente = []
+        self.liste_client = []
 
     # fonction permettant d'ajouter les voitures en vente par la concession
-    def ajout_voiture(self, prix, roue, couleur, moteur):
-        self.voitures.append(Voiture(prix, roue, moteur, self.marque, couleur))
+    def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant):
+        moteur={"chevaux":mt_chevaux, "carburant": mt_carburant}
+        self.voitures_en_vente.append(Voiture(prix, roue, moteur, self.marque, couleur))
 
-    # fonction permettant d'enregistrer tout les types de moteurs présent dans les voitures de la concession
-    def ajout_moteur(self, chevaux, carburant, catégorie, nom):
-        self.moteurs[nom] = Moteur(chevaux, carburant, catégorie)
+    def achat_voiture(self, nom, prénom, date, modele):
+        self.liste_client.append([date, nom, prénom,self.voitures_en_vente[modele]])
+        self.voitures_en_vente.pop(modele)
 
 
 # création de la classe voiture
@@ -28,14 +29,10 @@ class Voiture:
         self.roue = roue
         self.couleur = couleur
 
-# création de la classe moteur
-class Moteur:
-
-    def __init__(self, chevaux, carburant, catégorie):
-        self.chevaux = chevaux
-        self.carburant = carburant
-        self.type = catégorie
 
 # prévenir l'utilisateur si par erreur il exécute le mauvais fichier
 if __name__ == "__main__":
     print("le programme n'est pas fait pour ça")
+
+
+#fichier fournisseur fichier client
