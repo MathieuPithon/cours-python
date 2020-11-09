@@ -2,7 +2,7 @@ from classes.concession import concessionnaire
 from classes.voiture import Voiture
 from classes.client import Client
 from classes.fournisseur import Fournisseur
-
+from constantes import LISTE, CONCESSION
 class programme_principal:
 
     def __init__(self):
@@ -10,18 +10,20 @@ class programme_principal:
 
     def launchpad(self):
             
-        concession = concessionnaire("renault", 15, "Angers", 4)
+        concession = concessionnaire(*CONCESSION)
         client = {}
         fournisseurs ={}
         # ajout des 3 voitures
 
-        concession.ajout_voiture(15000, "crantée", "bleu", 150, "diesel", "1")
-        concession.ajout_voiture(50000, "chromée", "azure", 878, "électrique", "2")
-        concession.ajout_voiture(45000, "chainée", "violacée", 320, "gasoil", "3")
-        concession.ajout_voiture(8500, "lisse", "blanc", 750, "sans plomb 95", "4")
-        concession.ajout_voiture(50, "voilée","rouille", 2, "huile", "5" )
+        concession.ajout_voiture(*LISTE[0])
+        concession.ajout_voiture(*LISTE[1])
+        concession.ajout_voiture(*LISTE[2])
+        concession.ajout_voiture(*LISTE[3])
+        concession.ajout_voiture(*LISTE[4])
+
         modele = {concession.voitures_en_vente[0].modele : concession.voitures_en_vente[0],concession.voitures_en_vente[1].modele : concession.voitures_en_vente[1],concession.voitures_en_vente[2].modele : concession.voitures_en_vente[2],
         concession.voitures_en_vente[3].modele : concession.voitures_en_vente[3]}
+
         # on affiche des valeurs pour vérifier
         print(concession.voitures_en_vente[0].couleur)
         print(concession.voitures_en_vente[1].marque, concession.voitures_en_vente[2].moteur.carburant)
