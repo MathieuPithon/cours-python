@@ -22,19 +22,33 @@ print(concession.__dict__, "\n \n")
 
 # print("voici votre voiture:", concession.voitures[3].__dict__)
 while True:
+    
+    #choix de l'utilisateur
     a=input("voulez vous enregistrer l'achat ou la vente d'une voiture ou voir la liste des voitures en vente ou vendue? (tapez achat, vente, listea, listev ou quit:")
+
+    #ajout d'une voiture dans la liste des voitures à vendre
     if a=="achat":
         print("on va maintenant vous proposer d'ajouter la dernière voiture:")
         concession.ajout_voiture(int(input("choisissez le prix:")), input("saisisssez le type de roue: "), input("saissez la couleur de la voiture:"), int(input("choisissez la puissance du moteur: ")), input("choisissez le carburant du moteur:"))
+    
+    #ajout d'une vente dans l'historique d'achat
     elif a=="vente":
         concession.achat_voiture(input("nom du client:"), input("prénom du client:"), input("date d'achat (jj/mm/aaaa):"), int(input("index de la voiture:")))
+    
+    #affichage de l'historique d'achat
     elif a =="listea":
         print(concession.liste_client)
+
+    #affichage de la liste des voitures en vente
     elif a == "listev":
         for voiture in concession.voitures_en_vente:
             print(voiture.__dict__)
+    
+    #mettre fin au programme
     elif a == "quit":
         break
+
+    #check si il a écrit un truc correc
     else:
         print("vous n'avez pas tapé qqch de correct")
 
