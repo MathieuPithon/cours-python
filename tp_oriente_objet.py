@@ -5,19 +5,26 @@ class concessionnaire:
         self.nb_employes = nb_employes
         self.ville = ville
         self.nb_modele = nb_modele
-        self.voitures = self.Voiture()
+        self.voitures= []
 
+    def ajout_voiture(self,prix, roue, couleur, moteur):
+        self.voitures.append() = self.Voiture(prix, roue, moteur, self.marque, couleur)
+
+    def ajout_moteur (self, chevaux, carburant, catégorie):
+        
     class Voiture:
         
-        def __init__(self, prix, roue, moteur, marque):
+        def __init__(self, prix, roue, moteur, marque, couleur):
             self.prix = prix
             self.marque = marque
-            self.moteur = self.Moteur()
+            self.moteur = moteur
+            self.roue = roue
+            self.couleur = couleur
 
         
-        class Moteur:
+    class Moteur:
             
-            def __init__ (self, chevaux, carburant, catégorie):
-                self.chevaux= chevaux
-                self.carburant = carburant
-                self.type = catégorie
+        def __init__ (self, chevaux, carburant, catégorie):
+            self.chevaux= chevaux
+            self.carburant = carburant
+            self.type = catégorie
