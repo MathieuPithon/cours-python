@@ -1,4 +1,6 @@
 # création de la classe concessionnaire
+from .voiture import Voiture
+from .moteur import Moteur
 class concessionnaire:
 
     def __init__(self, marque, nb_employes, ville, nb_modele):

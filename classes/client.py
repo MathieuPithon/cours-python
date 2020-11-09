@@ -1,4 +1,4 @@
-from tp_oriente_objet import concessionnaire
+from .concession import concessionnaire
 
 class Client :
 
