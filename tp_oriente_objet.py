@@ -11,7 +11,7 @@ class concessionnaire:
         self.voitures.append( Voiture(prix, roue, moteur, self.marque, couleur))
 
     def ajout_moteur (self, chevaux, carburant, catégorie):
-        pass
+        
 class Voiture:
     
     def __init__(self, prix, roue, moteur, marque, couleur):
@@ -28,3 +28,7 @@ class Moteur:
         self.chevaux= chevaux
         self.carburant = carburant
         self.type = catégorie
+
+
+if __name__ == "__main__":
+    print("le programme n'est pas fait pour ça")
