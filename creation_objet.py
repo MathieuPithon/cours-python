@@ -20,9 +20,9 @@ print(concession.__dict__, "\n \n")
 
 
 
-# print("voici votre voiture:", concession.voitures[3].__dict__)
 while True:
-    
+    for voiture in concession.voitures_en_vente:
+        print(voiture.__dict__)
     #choix de l'utilisateur
     a=input("voulez vous enregistrer l'achat ou la vente d'une voiture ou voir la liste des voitures en vente ou vendue? (tapez achat, vente, listea, listev ou quit:")
 
@@ -34,17 +34,17 @@ while True:
             print("nous connaissons déja ce fournisseur")
         else:
             print("c'est la première fois que l'on commerce avec ce fournisseur, on va l'enregistrer")
-            fournisseurs[fournisseur] = Fournisseur(fournisseur, input("choisissez la localisation de l'usine:"), input("donnez la nationalité du fournisseur"))
+            fournisseurs[fournisseur] = Fournisseur(fournisseur, input("choisissez la localisation de l'usine: "), input("donnez la nationalité du fournisseur: "))
         mod = input("saisissez le modèle de la voiture:")
         if mod in modele:
             print("on a déja acheté ce type de modèle, il a été acheté automatiquement")
-            concession.ajout_voiture(modele[mod])
-            fournisseurs[fournisseur].historique_achat(modele[mod])
+            concession.ajout_voiture(modele[mod].prix, modele[mod].roue, modele[mod].couleur, modele[mod].moteur.chevaux, modele[mod].moteur.carburant, modele[mod].modele)
+            fournisseurs[fournisseur].historique_achat_fournisseur(modele[mod])
         else:
             print("ce modèle n'existe pas encore, on va le créer:")
             modele[mod]= concession.ajout_voiture(int(input("choisissez le prix:")), input("saisisssez le type de roue: "), input("saissez la couleur de la voiture:"), int(input("choisissez la puissance du moteur: ")),
             input("choisissez le carburant du moteur:"), mod)
-            fournisseurs[fournisseur].historique_achat(modele[mod])
+            fournisseurs[fournisseur].historique_achat_fournisseur(modele[mod])
     
     #ajout d'une vente dans l'historique d'achat
     elif a=="vente":

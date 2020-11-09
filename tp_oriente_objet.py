@@ -10,11 +10,11 @@ class concessionnaire:
         self.liste_client = []
 
     # fonction permettant d'ajouter les voitures en vente par la concession
-    def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant):
-        self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur))
+    def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant, modele):
+        self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur, modele))
 
     def achat_voiture(self, nom, prénom, date, modele):
-        self.liste_client.append([date, nom, prénom,modele])
+        self.liste_client.append([date, nom, prénom, modele])
         self.voitures_en_vente.remove(modele)
 
 
@@ -40,4 +40,9 @@ if __name__ == "__main__":
     print("le programme n'est pas fait pour ça")
 
 
-#fichier fournisseur fichier client
+#une classe un fichier
+#un dossier qui contient les classes
+#programme principal dans une classe
+#donnée dans un ou plusieurs fichier de configuration
+#ne doivent contenir que des constantes
+#
