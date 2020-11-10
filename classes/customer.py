@@ -7,23 +7,23 @@ class Customer:
     """
     class docstring
     """
-    def __init__(self, nom, prénom):
-        self.nom = nom
-        self.prenom = prénom
-        self.montant_total = 0
+    def __init__(self, name, firstname):
+        self.name = name
+        self.firstname = firstname
+        self.total_amount = 0
         self.historique_achat = []
-        self.dernier_achat = None
+        self.last_buy = None
 
-    def achat(self, date, modele):
+    def achat(self, date, model):
         """
         method docstring
         """
-        self.montant_total += modele.prix
-        self.last_buy(modele, date)
-        self.historique_achat.append(modele)
+        self.total_amount += model.price
+        self.last_buy_function(model, date)
+        self.historique_achat.append(model)
 
-    def last_buy(self, modele, date):
+    def last_buy_function(self, model, date):
         """
         method docstring
         """
-        self.dernier_achat = (modele, date)
+        self.last_buy = (model, date)

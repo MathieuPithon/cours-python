@@ -31,9 +31,9 @@ class Dealership:
             elements[5]
             ]))
 
-    def achat_voiture(self, name, nickname, date, model):
+    def achat_voiture(self, name, firstname, date, model):
         """
         method docstring
         """
-        self.liste_client.append([date, name, nickname, model])
+        self.liste_client.append([date, name, firstname, model])
         self.voitures_en_vente.remove(model)
