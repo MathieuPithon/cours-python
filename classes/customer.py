@@ -3,7 +3,7 @@ module docstring
 """
 
 
-class Client:
+class Customer:
     """
     class docstring
     """

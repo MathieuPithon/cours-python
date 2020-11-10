@@ -4,7 +4,7 @@ module docstring
 """
 
 
-class Moteur:
+class Engine:
     """
     module docstring
     """

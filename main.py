@@ -1,8 +1,8 @@
 """
 module docstring
 """
-from classes.concession import Concessionnaire
-from classes.client import Client
+from classes.dealership import Dealership
+from classes.customer import Customer
 from classes.supplier import Supplier
 from constants import LIST_CARS, CAR_DEALERSHIP
 
@@ -25,14 +25,11 @@ class Main:
         """
         function docstring
         """
-        self.concession = Concessionnaire(*CAR_DEALERSHIP)
+        self.concession = Dealership(*CAR_DEALERSHIP)
         for ele in LIST_CARS:
             self.concession.ajout_voiture(ele)
-        # [self.concession.ajout_voiture(*ele) for ele in LISTE]
         for voiture in self.concession.voitures_en_vente:
             self.modele[voiture.modele] = voiture
-        # [self.modele[voiture.modele] =
-        #  voiture for voiture in self.concession.voitures_en_vente]
 
     def choix_fournisseur(self):
         """
@@ -100,7 +97,7 @@ class Main:
         if nom in self.client:
             print("le client est déja dans notre base de donnée:")
         else:
-            self.client[nom] = Client(nom, input("prénom du client:"))
+            self.client[nom] = Customer(nom, input("prénom du client:"))
         self.client[nom].achat(
             input("date d'achat (jj/mm/aaaa):"),
             self.concession.voitures_en_vente[
