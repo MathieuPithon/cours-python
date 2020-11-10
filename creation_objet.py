@@ -9,7 +9,6 @@ class programme_principal:
         self.launchpad()
 
     def launchpad(self):
-            
         concession = concessionnaire(*CONCESSION)
         client = {}
         fournisseurs ={}
@@ -21,12 +20,15 @@ class programme_principal:
         concession.ajout_voiture(*LISTE[3])
         concession.ajout_voiture(*LISTE[4])
 
-        modele = {concession.voitures_en_vente[0].modele : concession.voitures_en_vente[0],concession.voitures_en_vente[1].modele : concession.voitures_en_vente[1],concession.voitures_en_vente[2].modele : concession.voitures_en_vente[2],
+        modele = {concession.voitures_en_vente[0].modele : concession.voitures_en_vente[0],
+        concession.voitures_en_vente[1].modele : concession.voitures_en_vente[1],
+        concession.voitures_en_vente[2].modele : concession.voitures_en_vente[2],
         concession.voitures_en_vente[3].modele : concession.voitures_en_vente[3]}
 
         # on affiche des valeurs pour vérifier
         print(concession.voitures_en_vente[0].couleur)
-        print(concession.voitures_en_vente[1].marque, concession.voitures_en_vente[2].moteur.carburant)
+        print(concession.voitures_en_vente[1].marque,
+        concession.voitures_en_vente[2].moteur.carburant)
         print(concession.__dict__, "\n \n")
 
 
@@ -35,7 +37,7 @@ class programme_principal:
             for voiture in concession.voitures_en_vente:
                 print(voiture.__dict__)
             #choix de l'utilisateur
-            a=input("voulez vous enregistrer l'achat ou la vente d'une voiture ou voir la liste des voitures en vente ou vendue? (tapez achat, vente, listea, listev ou quit:")
+            a=input("tapez achat, vente, listea, listev ou quit:")
 
             #ajout d'une voiture dans la liste des voitures à vendre
             if a=="achat":
