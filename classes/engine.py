@@ -8,9 +8,9 @@ class Engine:
     """
     module docstring
     """
-    def __init__(self, chevaux, carburant):
-        self.chevaux = chevaux
-        self.carburant = carburant
+    def __init__(self, horsepower, fuel):
+        self.chevaux = horsepower
+        self.carburant = fuel
 
     def funcname(self, parameter_list):
         """
