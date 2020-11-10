@@ -1,3 +1,6 @@
+"""
+module docstring
+"""
 LISTE=[[15000, "crantée", "bleu", 150, "diesel", "1"],
 [50000, "chromée", "azure", 878, "électrique", "2"],
 [45000, "chainée", "violacée", 320, "gasoil", "3"],

@@ -22,6 +22,7 @@ class Main:
         self.main_loop()
 
 
+
     def set_objects_from_datas(self):
         """
         function docstring

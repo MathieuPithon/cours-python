@@ -1,8 +1,12 @@
-# création de la classe concessionnaire
+"""
+module docstring
+"""
 from .voiture import Voiture
 from .moteur import Moteur
 class Concessionnaire:
-
+    """
+    class docstring
+    """
     def __init__(self, marque, nb_employes, ville, nb_modele):
         self.marque = marque
         self.nb_employes = nb_employes
@@ -13,10 +17,21 @@ class Concessionnaire:
 
     # fonction permettant d'ajouter les voitures en vente par la concession
     def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant, modele):
-        return self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur, modele))
-        
+        """
+        method docstring
+        """
+        return self.voitures_en_vente.append(Voiture(
+            prix,
+            roue,
+            Moteur(mt_chevaux, mt_carburant),
+            self.marque,
+            couleur,
+            modele
+            ))
 
     def achat_voiture(self, nom, prénom, date, modele):
+        """
+        method docstring
+        """
         self.liste_client.append([date, nom, prénom, modele])
         self.voitures_en_vente.remove(modele)
-
