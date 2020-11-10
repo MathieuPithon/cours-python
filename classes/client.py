@@ -1,4 +1,4 @@
-from .concession import concessionnaire
+from .concession import Concessionnaire
 
 class Client :
 
@@ -10,6 +10,6 @@ class Client :
 
     def achat(self, date, modele):
         self.montant_total += modele.prix
-        self.dernier_achat = modele
+        self.dernier_achat = (modele, date)
         self.historique_achat.append(modele)
-        
+    print([])
