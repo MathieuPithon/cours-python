@@ -18,20 +18,18 @@ class Concessionnaire:
         self.liste_client = []
 
     # fonction permettant d'ajouter les voitures en vente par la concession
-    def ajout_voiture(self,
-                      prix, roue, couleur,
-                      mt_chevaux, mt_carburant, modele):
+    def ajout_voiture(self, elements):
         """
         method docstring
         """
-        return self.voitures_en_vente.append(Voiture(
-            prix,
-            roue,
-            Moteur(mt_chevaux, mt_carburant),
+        return self.voitures_en_vente.append(Voiture([
+            elements[0],
+            elements[1],
+            Moteur(elements[3], elements[4]),
             self.marque,
-            couleur,
-            modele
-            ))
+            elements[2],
+            elements[5]
+            ]))
 
     def achat_voiture(self, nom, prénom, date, modele):
         """

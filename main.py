@@ -27,7 +27,7 @@ class Main:
         """
         self.concession = Concessionnaire(*CONCESSION)
         for ele in LISTE:
-            self.concession.ajout_voiture(*ele)
+            self.concession.ajout_voiture(ele)
         # [self.concession.ajout_voiture(*ele) for ele in LISTE]
         for voiture in self.concession.voitures_en_vente:
             self.modele[voiture.modele] = voiture
@@ -49,7 +49,7 @@ class Main:
             self.fournisseurs[self.fournisseur] = Fournisseur(
                 self.fournisseur,
                 input("choisissez la localisation de l'usine: "),
-                input("donnez la nationalitÃ© du fournisseur: ")
+                input("donnez la nationalité du fournisseur: ")
             )
 
     def choix_modele(self):

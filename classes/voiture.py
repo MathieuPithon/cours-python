@@ -7,13 +7,13 @@ class Voiture:
     """
     module docstring
     """
-    def __init__(self, prix, roue, moteur, marque, couleur, modele):
-        self.prix = prix
-        self.marque = marque
-        self.moteur = moteur
-        self.roue = roue
-        self.couleur = couleur
-        self.modele = modele
+    def __init__(self, parameters):
+        self.prix = parameters[0]
+        self.marque = parameters[1]
+        self.moteur = parameters[2]
+        self.roue = parameters[3]
+        self.couleur = parameters[4]
+        self.modele = parameters[5]
 
     def funcname(self, parameter_list):
         """
