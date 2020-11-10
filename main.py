@@ -21,8 +21,6 @@ class Main:
         self.set_objects_from_datas()
         self.main_loop()
 
-
-
     def set_objects_from_datas(self):
         """
         function docstring
@@ -33,7 +31,8 @@ class Main:
         # [self.concession.ajout_voiture(*ele) for ele in LISTE]
         for voiture in self.concession.voitures_en_vente:
             self.modele[voiture.modele] = voiture
-        # [self.modele[voiture.modele] = voiture for voiture in self.concession.voitures_en_vente]
+        # [self.modele[voiture.modele] =
+        #  voiture for voiture in self.concession.voitures_en_vente]
 
     def choix_fournisseur(self):
         """
@@ -44,7 +43,7 @@ class Main:
             print("nous connaissons dÃ©ja ce fournisseur")
         else:
             print(
-                "c'est la premiÃ¨re fois que l'on commerce avec"
+                "c'est la première fois que l'on commerce avec"
                 " ce fournisseur, on va l'enregistrer"
             )
             self.fournisseurs[self.fournisseur] = Fournisseur(
@@ -57,10 +56,11 @@ class Main:
         """
         mod choice docstring
         """
-        mod = input("saisissez le modÃ¨le de la voiture:")
+        mod = input("saisissez le modèle de la voiture:")
         if mod in self.modele:
             print(
-                "on a dÃ©ja achetÃ© ce type de modÃ¨le, il a Ã©tÃ© achetÃ© automatiquement")
+                "on a déja acheté ce type de modèle,"
+                " il a été acheté automatiquement")
             self.concession.ajout_voiture(
                 self.modele[mod].prix,
                 self.modele[mod].roue,
@@ -72,7 +72,7 @@ class Main:
             self.fournisseurs[self.fournisseur].historique_achat_fournisseur(
                 self.modele[mod])
         else:
-            print("ce modÃ¨le n'existe pas encore, on va le crÃ©er:")
+            print("ce modÃ¨le n'existe pas encore, on va le créer:")
             self.modele[mod] = self.concession.ajout_voiture(
                 int(input("choisissez le prix:")),
                 input("saisisssez le type de roue: "),
@@ -98,12 +98,14 @@ class Main:
         """
         nom = input("nom du client:")
         if nom in self.client:
-            print("le client est dÃ©ja dans notre base de donnÃ©e:")
+            print("le client est déja dans notre base de donnée:")
         else:
-            self.client[nom] = Client(nom, input("prÃ©nom du client:"))
+            self.client[nom] = Client(nom, input("prénom du client:"))
         self.client[nom].achat(
             input("date d'achat (jj/mm/aaaa):"),
-            self.concession.voitures_en_vente[int(input("index de la voiture:"))]
+            self.concession.voitures_en_vente[
+                int(input("index de la voiture:"))
+                ]
         )
         self.concession.achat_voiture(
             self.client[nom].nom,

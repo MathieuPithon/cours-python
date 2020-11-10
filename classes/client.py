@@ -1,16 +1,17 @@
 """
 module docstring
 """
-class Client :
+
+
+class Client:
     """
     class docstring
     """
-
-    def __init__ (self, nom, prénom):
+    def __init__(self, nom, prénom):
         self.nom = nom
         self.prenom = prénom
         self.montant_total = 0
-        self.historique_achat= []
+        self.historique_achat = []
         self.dernier_achat = None
 
     def achat(self, date, modele):
@@ -20,7 +21,8 @@ class Client :
         self.montant_total += modele.prix
         self.last_buy(modele, date)
         self.historique_achat.append(modele)
-    def last_buy(self,modele, date):
+
+    def last_buy(self, modele, date):
         """
         method docstring
         """

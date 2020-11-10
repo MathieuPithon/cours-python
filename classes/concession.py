@@ -3,6 +3,8 @@ module docstring
 """
 from .voiture import Voiture
 from .moteur import Moteur
+
+
 class Concessionnaire:
     """
     class docstring
@@ -16,7 +18,9 @@ class Concessionnaire:
         self.liste_client = []
 
     # fonction permettant d'ajouter les voitures en vente par la concession
-    def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant, modele):
+    def ajout_voiture(self,
+                      prix, roue, couleur,
+                      mt_chevaux, mt_carburant, modele):
         """
         method docstring
         """
