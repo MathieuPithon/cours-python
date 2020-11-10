@@ -3,7 +3,7 @@ module docstring
 """
 
 
-class Fournisseur:
+class Supplier:
     """
     module docstring
     """

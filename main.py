@@ -3,8 +3,8 @@ module docstring
 """
 from classes.concession import Concessionnaire
 from classes.client import Client
-from classes.fournisseur import Fournisseur
-from constantes import LISTE, CONCESSION
+from classes.supplier import Supplier
+from constants import LIST_CARS, CAR_DEALERSHIP
 
 
 class Main:
@@ -25,8 +25,8 @@ class Main:
         """
         function docstring
         """
-        self.concession = Concessionnaire(*CONCESSION)
-        for ele in LISTE:
+        self.concession = Concessionnaire(*CAR_DEALERSHIP)
+        for ele in LIST_CARS:
             self.concession.ajout_voiture(ele)
         # [self.concession.ajout_voiture(*ele) for ele in LISTE]
         for voiture in self.concession.voitures_en_vente:
@@ -40,13 +40,13 @@ class Main:
         """
         self.fournisseur = input("choisissez le fournisseur: ")
         if self.fournisseur in self.fournisseurs:
-            print("nous connaissons dÃ©ja ce fournisseur")
+            print("nous connaissons déja ce fournisseur")
         else:
             print(
                 "c'est la première fois que l'on commerce avec"
                 " ce fournisseur, on va l'enregistrer"
             )
-            self.fournisseurs[self.fournisseur] = Fournisseur(
+            self.fournisseurs[self.fournisseur] = Supplier(
                 self.fournisseur,
                 input("choisissez la localisation de l'usine: "),
                 input("donnez la nationalité du fournisseur: ")
@@ -61,26 +61,26 @@ class Main:
             print(
                 "on a déja acheté ce type de modèle,"
                 " il a été acheté automatiquement")
-            self.concession.ajout_voiture(
+            self.concession.ajout_voiture([
                 self.modele[mod].prix,
                 self.modele[mod].roue,
                 self.modele[mod].couleur,
                 self.modele[mod].moteur.chevaux,
                 self.modele[mod].moteur.carburant,
                 self.modele[mod].modele
-            )
+            ])
             self.fournisseurs[self.fournisseur].historique_achat_fournisseur(
                 self.modele[mod])
         else:
             print("ce modÃ¨le n'existe pas encore, on va le créer:")
-            self.modele[mod] = self.concession.ajout_voiture(
+            self.modele[mod] = self.concession.ajout_voiture([
                 int(input("choisissez le prix:")),
                 input("saisisssez le type de roue: "),
                 input("saissez la couleur de la voiture:"),
                 int(input("choisissez la puissance du moteur: ")),
                 input("choisissez le carburant du moteur:"),
                 mod
-            )
+            ])
             self.fournisseurs[self.fournisseur].historique_achat_fournisseur(
                 self.modele[mod])
 
