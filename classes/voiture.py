@@ -1,4 +1,4 @@
-# création de la classe voiture
+
 class Voiture:
 
     def __init__(self, prix, roue, moteur, marque, couleur, modele):

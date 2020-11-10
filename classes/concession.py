@@ -1,7 +1,7 @@
 # création de la classe concessionnaire
 from .voiture import Voiture
 from .moteur import Moteur
-class concessionnaire:
+class Concessionnaire:
 
     def __init__(self, marque, nb_employes, ville, nb_modele):
         self.marque = marque
@@ -13,7 +13,8 @@ class concessionnaire:
 
     # fonction permettant d'ajouter les voitures en vente par la concession
     def ajout_voiture(self, prix, roue, couleur,  mt_chevaux, mt_carburant, modele):
-        self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur, modele))
+        return self.voitures_en_vente.append(Voiture(prix, roue, Moteur(mt_chevaux, mt_carburant), self.marque, couleur, modele))
+        
 
     def achat_voiture(self, nom, prénom, date, modele):
         self.liste_client.append([date, nom, prénom, modele])
