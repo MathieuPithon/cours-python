@@ -141,7 +141,7 @@ class Main:
             elif user_input == "quit":
                 break
 
-            # check si il a Ã©crit un truc correc
+            # check si il a écrit un truc correc
             else:
                 print("vous n'avez pas tapé qqch de correct")
 
