@@ -1,4 +1,4 @@
-import random, string, time, pypokedex
+import random, string, time, pypokedex, pokeball
 
 # 1 - créer une liste des pokémons, incluant une chance de spawn (0% - 100%) 
 # 2 - créer une méthode spwan, qui, en fonction de la chance de spawn, fait spawn un pokémon (affiche son nom)
@@ -42,6 +42,7 @@ class Pokemon():
         self.timeStart = time.time_ns()           
         self.pokemon = pypokedex.get(dex = id)
         self.spawnrate = random.randint(0,100)
+        self.resistance = random.randint(0,50)
         self.startSpawn = self.__class__.max
         self.__class__.max += self.spawnrate
         self.endSpawn = self.__class__.max
@@ -52,9 +53,10 @@ class Pokemon():
 
 if __name__ == "__main__" :
     sum = 0
+    sample = 100000
     test = {}
     result = {}
-    for i in range (1, 898):
+    for i in range (1, 100):
         test[i] = Pokemon(i)
         print(test[i].pokemon.name)
         sum += test[i].spawnrate
@@ -63,7 +65,7 @@ if __name__ == "__main__" :
     for i in test:
          print("le pokémon : ", test[i].pokemon.name, "  a une chance de spawn de : ", "{:.2f}".format(test[i].spawnrate/(test[i].max/100)), "%")
 
-    for i in range(10000):
+    for i in range(sample):
         spawn = random.randint(1, test[1].max)
         for i in test:
             if spawn >= test[i].startSpawn and spawn < test[i].endSpawn:
@@ -71,5 +73,6 @@ if __name__ == "__main__" :
                 result[test[i].pokemon.name] += 1
                 break
     
+    print(len(result))
     for i in result:
-        print("pokémon: ", i, "  quantité:  ", result[i], "pourcentage: ", "{:.2f}".format(result[i]/1000))
+        print("pokémon: ", i, "  quantité:  ", result[i], "pourcentage: ", "{:.2f}".format(result[i]/(sample/100)))
