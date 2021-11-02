@@ -1,4 +1,6 @@
-import random, string, time, pypokedex, pokeball
+import random, string, time, pypokedex
+from typing import List
+from pokeball import Pokeball
 
 # 1 - créer une liste des pokémons, incluant une chance de spawn (0% - 100%) 
 # 2 - créer une méthode spwan, qui, en fonction de la chance de spawn, fait spawn un pokémon (affiche son nom)
@@ -43,36 +45,19 @@ class Pokemon():
         self.pokemon = pypokedex.get(dex = id)
         self.spawnrate = random.randint(0,100)
         self.resistance = random.randint(0,50)
+        self.damage = random.randint(0,100)
         self.startSpawn = self.__class__.max
         self.__class__.max += self.spawnrate
         self.endSpawn = self.__class__.max
 
     def __repr__(self):
-        return self.pokemon.name
-    
+    #c'est la méthode qui permet de gérer ce qui va s'afficher quand on va utiliser la fonction print sur l'objet
+        return ("nom: " + self.pokemon.name + "  rareté: " + str(self.spawnrate) + "   resistance: " + str(self.resistance) + " damage: " + str(self.damage) + " type: " + str(self.pokemon.types))
 
-if __name__ == "__main__" :
-    sum = 0
-    sample = 100000
-    test = {}
-    result = {}
-    for i in range (1, 100):
-        test[i] = Pokemon(i)
-        print(test[i].pokemon.name)
-        sum += test[i].spawnrate
-        result[test[i].pokemon.name] = 0
-    
-    for i in test:
-         print("le pokémon : ", test[i].pokemon.name, "  a une chance de spawn de : ", "{:.2f}".format(test[i].spawnrate/(test[i].max/100)), "%")
-
-    for i in range(sample):
-        spawn = random.randint(1, test[1].max)
-        for i in test:
-            if spawn >= test[i].startSpawn and spawn < test[i].endSpawn:
-                # print("le pokemon est spawn: ", test[i].pokemon.name, "   et son taux de spawn est:  ", test[i].spawnrate, "%")
-                result[test[i].pokemon.name] += 1
-                break
-    
-    print(len(result))
-    for i in result:
-        print("pokémon: ", i, "  quantité:  ", result[i], "pourcentage: ", "{:.2f}".format(result[i]/(sample/100)))
+    @staticmethod
+    def spawn(pokeliste):
+    #c'et la méthode statique qui gère le spawn de pokémon dans la pool
+        spawn= random.randint(1, __class__.max)
+        for i in pokeliste:
+            if spawn >= pokeliste[i].startSpawn and spawn < pokeliste[i].endSpawn:
+                return pokeliste[i]
